@@ -1,5 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Put, Post, Res, HttpCode, HttpStatus, HttpException, NotFoundException } from '@nestjs/common';
 import { CoursesService } from './courses.service';
+import { CreateCourseDTO } from './dto/create-course.dto';
+import { UpdateCourseDTO } from './dto/update-course.dto';
 
 @Controller('courses')
 export class CoursesController {
@@ -28,15 +30,15 @@ export class CoursesController {
   }
 
   @Post()
-  create(@Body() body, @Res() response) {
-    const course = this.coursesService.create(body);
+  create(@Body() createcoursedto: CreateCourseDTO, @Res() response) {
+    const course = this.coursesService.create(createcoursedto);
     
     return response.status(200).json({ courses: course});
   }
   
   @Put(':id')
-  update(@Param('id') id: number, @Body() body) {
-    return this.coursesService.update(+id,body);
+  update(@Param('id') id: number, @Body() updateCourseDTO: UpdateCourseDTO) {
+    return this.coursesService.update(+id, updateCourseDTO);
   }
   
   @HttpCode(HttpStatus.NO_CONTENT) // or (204)
