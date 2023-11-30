@@ -9,7 +9,6 @@ async function bootstrap() {
     forbidNonWhitelisted: true, // recusa a request e lista as propriedades nao permitidas
     transform: true // ja faz a transformacao auto do tipo de dados enviados na request
   }));
-
   await app.listen(3000);
 }
 bootstrap();
