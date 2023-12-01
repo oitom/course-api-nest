@@ -20,8 +20,8 @@ export class CoursesController {
   }
 
   @Get(':id')
-  findOne(@Param() params) {
-    const course = this.coursesService.findOne(params.id);
+  async findOne(@Param() params) {
+    const course = await this.coursesService.findOne(params.id);
 
     if (!course) {
       throw new NotFoundException(`Course ${params.id} not found`);
@@ -30,21 +30,21 @@ export class CoursesController {
   }
 
   @Post()
-  create(@Body() createcoursedto: CreateCourseDTO, @Res() response) {
-    const course = this.coursesService.create(createcoursedto);
+  async create(@Body() createcoursedto: CreateCourseDTO, @Res() response) {
+    const course = await this.coursesService.create(createcoursedto);
     
     return response.status(200).json({ courses: course});
   }
   
   @Put(':id')
-  update(@Param('id') id: number, @Body() updateCourseDTO: UpdateCourseDTO) {
-    return this.coursesService.update(id, updateCourseDTO);
+  async update(@Param('id') id: number, @Body() updateCourseDTO: UpdateCourseDTO) {
+    return await this.coursesService.update(id, updateCourseDTO);
   }
   
   @HttpCode(HttpStatus.NO_CONTENT) // or (204)
   @Delete(':id')
-  remove(@Param('id') id: number) {
-   return this.coursesService.remove(id);
+  async remove(@Param('id') id: number) {
+   return await this.coursesService.remove(id);
   }
   
 }
