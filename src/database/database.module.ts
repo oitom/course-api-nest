@@ -12,6 +12,8 @@ export const dataSourceOptions: DataSourceOptions = {
   database: 'devtraing',
   entities: [Course],
   synchronize: true, // sincroniza as propriedades do entity como coluna no bd
+  logging: true, // Ativa o log do TypeORM no console
+  logger: 'advanced-console', // Tipo de logger
 }
 
 @Module({

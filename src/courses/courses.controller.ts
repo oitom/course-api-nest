@@ -9,10 +9,10 @@ export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
   
   @Get()
-  findAll(@Res() response) {
-    const courses =  this.coursesService.findAll();
+  async findAll(@Res() response) {
+    const courses =  await this.coursesService.findAll();
 
-    if (courses.length == 0) {
+    if (!courses) {
       throw new HttpException(`No courses found`, HttpStatus.NOT_FOUND);
     }
 
