@@ -77,6 +77,8 @@ Nest is [MIT licensed](LICENSE).
 ```
 pnpm install class-validator class-transformer
 pnpm install @nestjs/mapped-types
- 
+pnpm install --save @nestjs/typeorm typeorm pg
+nest g module database
+
 ```
 

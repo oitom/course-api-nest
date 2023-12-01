@@ -5,9 +5,9 @@ services:
     container_name: devtraing-db
     restart: always
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - .docker/dbdata:/var/lib/postgresql/dbdata
     environment:
-      - POSTGRESS_PASSWORD=docker
-      - POSTGRESS_DB=devtraing
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=devtraing
