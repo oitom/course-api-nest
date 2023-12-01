@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  db:
+    build: .
+    container_name: devtraing-db
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/dbdata
+    environment:
+      - POSTGRESS_PASSWORD=docker
+      - POSTGRESS_DB=devtraing
